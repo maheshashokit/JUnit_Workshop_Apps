@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Contact.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Junit_Testing_App</a> &gt; <a href="index.source.html" class="el_package">com.ashokit</a> &gt; <span class="el_source">Contact.java</span></div><h1>Contact.java</h1><pre class="source lang-java linenums">package com.ashokit;
+
+public class Contact {
+	
+	private String firstName;
+	
+	private String lastName;
+	
+	private String contactNo;
+	
+<span class="nc" id="L11">	public Contact() {</span>
+		
+<span class="nc" id="L13">	}</span>
+	
+<span class="fc" id="L15">	public Contact(String firstName, String lastName, String contactNo) {</span>
+<span class="fc" id="L16">		this.firstName = firstName;</span>
+<span class="fc" id="L17">		this.lastName = lastName;</span>
+<span class="fc" id="L18">		this.contactNo = contactNo;</span>
+<span class="fc" id="L19">	}</span>
+
+	public void setFirstName(String firstName) {
+<span class="nc" id="L22">		this.firstName = firstName;</span>
+<span class="nc" id="L23">	}</span>
+	
+	public void setLastName(String lastName) {
+<span class="nc" id="L26">		this.lastName = lastName;</span>
+<span class="nc" id="L27">	}</span>
+	
+	public void setContactNo(String contactNo) {
+<span class="nc" id="L30">		this.contactNo = contactNo;</span>
+<span class="nc" id="L31">	}</span>
+	
+	public String getFirstName() {
+<span class="fc" id="L34">		return firstName;</span>
+	}
+	
+	public String getLastName() {
+<span class="fc" id="L38">		return lastName;</span>
+	}
+	
+	public String getContactNo() {
+<span class="nc" id="L42">		return contactNo;</span>
+	}
+	
+	//additionally methods
+	public void validateFirstName() {
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">		if(this.firstName.isBlank()) {</span>
+<span class="nc" id="L48">			throw new RuntimeException(&quot;FirstName can't be Empty&quot;);</span>
+		}
+<span class="fc" id="L50">	}</span>
+	
+	public void validateLastName() {
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">		if(this.lastName.isBlank()) {</span>
+<span class="nc" id="L54">			throw new RuntimeException(&quot;LastName can't be Empty&quot;);</span>
+		}
+<span class="fc" id="L56">	}</span>
+	
+	public void validateContactNo() {
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">		if(this.contactNo.isBlank()) {</span>
+<span class="nc" id="L60">			throw new RuntimeException(&quot;ContactNo can't be Empty&quot;);</span>
+		}
+		
+<span class="fc bfc" id="L63" title="All 2 branches covered.">		if(this.contactNo.length() != 10) {</span>
+<span class="fc" id="L64">			throw new RuntimeException(&quot;ContactNo Length Shoule be 10.&quot;);</span>
+		}
+		
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">		if(!this.contactNo.startsWith(&quot;0&quot;)) {</span>
+<span class="nc" id="L68">			throw new RuntimeException(&quot;ContactNumber should start with Zero.&quot;);</span>
+		}
+<span class="fc" id="L70">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
