@@ -1,5 +1,7 @@
 package com.ashokit.dao;
 
+import com.ashokit.entity.User;
+
 public class UserDao {
 	
 	public String getLoginStatus(String username,String password) {
@@ -16,5 +18,14 @@ public class UserDao {
 	
 	public void sendEmailNotifications(int count) {
 		System.out.println("Email Sent For Today Count::::" + count);
+	}
+	
+	public User getUserById(String userId) {
+		return new User();
+	}
+	
+	public User saveUser(User user) {
+		System.out.println("Inside Spy......");
+		return new User("Mahesh","Kumar","Male");
 	}
 }

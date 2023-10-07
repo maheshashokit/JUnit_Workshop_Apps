@@ -1,6 +1,10 @@
 package com.ashokit.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ashokit.dao.UserDao;
+import com.ashokit.entity.User;
 
 public class UserService {
 	
@@ -22,5 +26,24 @@ public class UserService {
 	public void sendEmails() {
 		userDao.sendEmailNotifications(05);
 	}
-
+	
+	public List<User> getAllUsers(List<String> userIds) {
+		List<User> userList = new ArrayList<User>();
+		for(String userId : userIds){
+			//getting the user object from userDao
+			User user = userDao.getUserById(userId);
+			//adding user object to userList
+			userList.add(user);
+		}
+		return userList;
+	}
+	
+	public User updateUser(User user) {
+        // Business logic for updating user
+        if (user == null || user.getFirstName() == null) {
+            throw new IllegalArgumentException("Invalid user data");
+        }
+        // Actual update logic using the repository
+        return userDao.saveUser(user);
+    }
 }

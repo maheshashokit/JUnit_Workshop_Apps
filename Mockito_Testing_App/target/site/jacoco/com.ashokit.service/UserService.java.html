@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Mockito_Testing_App</a> &gt; <a href="index.source.html" class="el_package">com.ashokit.service</a> &gt; <span class="el_source">UserService.java</span></div><h1>UserService.java</h1><pre class="source lang-java linenums">package com.ashokit.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ashokit.dao.UserDao;
+import com.ashokit.entity.User;
 
 public class UserService {
 	
@@ -8,20 +12,39 @@ public class UserService {
 	private UserDao userDao;
 	
 	//Injecting the UserDao Object Into UserService
-<span class="fc" id="L11">	public UserService(UserDao userDao) {</span>
-<span class="fc" id="L12">		this.userDao = userDao;</span>
-<span class="fc" id="L13">	}</span>
+<span class="fc" id="L15">	public UserService(UserDao userDao) {</span>
+<span class="fc" id="L16">		this.userDao = userDao;</span>
+<span class="fc" id="L17">	}</span>
 	
 	//Service Method used to validate the Login Credentials
 	public String validateLogin(String username, String password) {
 		//calling the UserDAO Class Method.
-<span class="fc" id="L18">		return userDao.getLoginStatus(username, password);</span>
+<span class="fc" id="L22">		return userDao.getLoginStatus(username, password);</span>
 	}
 	
 	//Service Method used for send email's
 	public void sendEmails() {
-<span class="fc" id="L23">		userDao.sendEmailNotifications(05);</span>
-<span class="fc" id="L24">	}</span>
-
+<span class="fc" id="L27">		userDao.sendEmailNotifications(05);</span>
+<span class="fc" id="L28">	}</span>
+	
+	public List&lt;User&gt; getAllUsers(List&lt;String&gt; userIds) {
+<span class="fc" id="L31">		List&lt;User&gt; userList = new ArrayList&lt;User&gt;();</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">		for(String userId : userIds){</span>
+			//getting the user object from userDao
+<span class="fc" id="L34">			User user = userDao.getUserById(userId);</span>
+			//adding user object to userList
+<span class="fc" id="L36">			userList.add(user);</span>
+<span class="fc" id="L37">		}</span>
+<span class="fc" id="L38">		return userList;</span>
+	}
+	
+	public User updateUser(User user) {
+        // Business logic for updating user
+<span class="pc bpc" id="L43" title="2 of 4 branches missed.">        if (user == null || user.getFirstName() == null) {</span>
+<span class="nc" id="L44">            throw new IllegalArgumentException(&quot;Invalid user data&quot;);</span>
+        }
+        // Actual update logic using the repository
+<span class="fc" id="L47">        return userDao.saveUser(user);</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
